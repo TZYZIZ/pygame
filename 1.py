@@ -2,17 +2,14 @@ import sys
 import pygame
 
 
-def draw_x(screen):
+def draw_rect(screen):
     screen.fill((0, 0, 0))
+    x1, y1 = 1, 1
+    w, h = screen.get_width() - 2, screen.get_height() - 2
 
 
-    x1, x2 = 0, screen.get_width()
-    y1, y2 = 0, screen.get_height()
-
-
-    color = pygame.Color(255, 255, 255)
-    pygame.draw.line(screen, color, (x1, y1), (x2, y2), 5)
-    pygame.draw.line(screen, color, (x1, y2), (x2, y1), 5)
+    color = pygame.Color('red')
+    pygame.draw.rect(screen, color, (x1, y1, w, h), 0)
 
 
 def get_size(data):
@@ -31,7 +28,7 @@ if __name__ == '__main__':
     width, height = get_size(input())
     size = width, height
     screen = pygame.display.set_mode(size)
-    draw_x(screen)
+    draw_rect(screen)
     pygame.display.flip()
     while pygame.event.wait().type != pygame.QUIT:
 
